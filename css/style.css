@@ -4,7 +4,7 @@ body {
   padding: 0;
   text-align: center;
   color: #fff;
-  background: orange url('../Pattern.png') repeat;
+  background: url('../pattern.png') repeat;
   background-size: 150px 150px;
   position: relative;
 }
@@ -143,5 +143,7 @@ footer {
   header h1 { font-size: 1.6rem; }
   .link-btn { font-size: 0.95rem; padding: 10px; }
 }
+
+
 
 

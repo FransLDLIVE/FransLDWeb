@@ -4,7 +4,7 @@ body {
   font-family: Arial, sans-serif;
   color: white;
   text-align: center;
-  background: black url('pattern.png') repeat;
+  background: black url('../pattern.png') repeat;
   background-size: auto;
 }
 
@@ -67,4 +67,5 @@ h1, h2 {
   height: 24px;
   margin-right: 10px;
 }
+
 

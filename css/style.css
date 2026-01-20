@@ -1,0 +1,145 @@
+body {
+  font-family: 'Fredoka', sans-serif;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  color: #fff;
+  background: orange url('../Pattern.png') repeat;
+  background-size: 150px 150px;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.9));
+  z-index: -1;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0,0,0,0.8);
+  color: #fff;
+  padding: 10px 20px;
+}
+
+.logo-img {
+  height: 40px;
+  width: auto;
+  filter: drop-shadow(0 0 14px white);
+  animation: glowPulse 2s infinite ease-in-out;
+}
+
+@keyframes glowPulse {
+  0% { filter: drop-shadow(0 0 12px white); }
+  50% { filter: drop-shadow(0 0 26px white); }
+  100% { filter: drop-shadow(0 0 12px white); }
+}
+
+.logo-text {
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: orange;
+  text-shadow: 
+    -2px -2px 0 black,
+     2px -2px 0 black,
+    -2px  2px 0 black,
+     2px  2px 0 black,
+     0px  3px 0 black,
+     3px  0px 0 black,
+    -3px  0px 0 black,
+     0px -3px 0 black;
+}
+
+.profile-img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin-top: 30px;
+  border: 3px solid black;
+}
+
+header h1 {
+  margin: 10px 0 5px;
+  font-size: 2rem;
+  color: orange;
+  font-weight: 700;
+  text-shadow: 
+    -2px -2px 0 black,
+     2px -2px 0 black,
+    -2px  2px 0 black,
+     2px  2px 0 black,
+     0px  3px 0 black,
+     3px  0px 0 black,
+    -3px  0px 0 black,
+     0px -3px 0 black;
+}
+
+header p {
+  color: #ddd;
+  margin-bottom: 30px;
+  font-weight: 400;
+}
+
+.link-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  padding: 12px;
+  margin: 10px auto;
+  width: 90%;
+  max-width: 400px;
+  border-radius: 12px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+  color: white;
+}
+
+.btn-icon {
+  height: 22px;
+  width: 22px;
+  position: absolute;
+  left: 15px;
+}
+
+.btn-text {
+  flex: 1;
+  text-align: center;
+}
+
+.link-btn.discord { background: #5865F2; }
+.link-btn.youtube { background: #FF0000; }
+.link-btn.tiktok {
+  background: #000000;
+  border: 2px solid #25F4EE;
+}
+.link-btn.tiktok:hover { border-color: #FE2C55; }
+.link-btn.instagram {
+  background: linear-gradient(45deg, #F58529, #DD2A7B, #8134AF, #515BD4);
+}
+
+.link-btn:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+footer {
+  margin-top: 40px;
+  padding: 20px;
+  font-size: 0.9rem;
+  color: #ccc;
+  font-weight: 400;
+}
+
+@media (max-width: 600px) {
+  .navbar { flex-direction: column; gap: 10px; }
+  .profile-img { width: 90px; height: 90px; }
+  header h1 { font-size: 1.6rem; }
+  .link-btn { font-size: 0.95rem; padding: 10px; }
+}

@@ -13,10 +13,17 @@
       <img src="logo.png" alt="FransLDLIVE Logo" class="logo-img">
     </div>
     <div class="nav-right">
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="texturepacks.html">Texture Packs</a>
-      </nav>
+      <div class="dropdown">
+        <button class="hamburger" id="dropdownBtn">
+          <span class="line line1"></span>
+          <span class="line line2"></span>
+          <span class="line line3"></span>
+        </button>
+        <div class="dropdown-menu" id="dropdownMenu">
+          <a href="index.html" class="dropdown-link">Home</a>
+          <a href="texturepacks.html" class="dropdown-link">Texture Packs</a>
+        </div>
+      </div>
     </div>
   </nav>
 
@@ -162,5 +169,33 @@
   <footer>
     <p>© 2026 LD Studios</p>
   </footer>
+
+  <script>
+    const dropdownBtn = document.getElementById('dropdownBtn');
+    const dropdownMenu = document.getElementById('dropdownMenu');
+
+    dropdownBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      dropdownBtn.classList.toggle('active');
+      dropdownMenu.classList.toggle('active');
+    });
+
+    document.addEventListener('click', function() {
+      dropdownBtn.classList.remove('active');
+      dropdownMenu.classList.remove('active');
+    });
+
+    dropdownMenu.addEventListener('click', function(e) {
+      e.stopPropagation();
+    });
+
+    const dropdownLinks = document.querySelectorAll('.dropdown-link');
+    dropdownLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        dropdownBtn.classList.remove('active');
+        dropdownMenu.classList.remove('active');
+      });
+    });
+  </script>
 </body>
 </html>

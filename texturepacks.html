@@ -14,175 +14,196 @@
     </div>
     <div class="nav-right">
       <div class="dropdown">
-        <button class="hamburger" id="dropdownBtn">
+        <button class="hamburger" id="dropdownBtn" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="dropdownMenu">
           <span class="line line1"></span>
           <span class="line line2"></span>
           <span class="line line3"></span>
         </button>
         <div class="dropdown-menu" id="dropdownMenu">
           <a href="index.html" class="dropdown-link">Home</a>
+          <a href="socials.html" class="dropdown-link">Socials</a>
           <a href="texturepacks.html" class="dropdown-link">Texture Packs</a>
         </div>
       </div>
     </div>
   </nav>
 
-  <header>
-    <h1>Texture Packs</h1>
-    <p style="font-size:1.1rem; color:#ddd; margin-top:8px; line-height:1.6;">
-      Texture packs used in my videos
-    </p>
-  </header>
-
-  <main class="packs-grid">
-
-    <!-- Better Clouds V2 -->
-    <a href="https://www.curseforge.com/minecraft-bedrock/texture-packs/better-clouds-v2" class="pack-card">
-      <img src="packs/betterclouds.png" alt="Pack Thumbnail" class="pack-thumb">
-      <h2 class="pack-name">Better Clouds V2</h2>
-      <p style="color:#ddd; font-size:0.95rem; margin:8px 0;">
-        Better clouds with more detail and a new design.
+  <div class="page-shell">
+    <header>
+      <h1>Texture Packs</h1>
+      <p style="font-size:1.1rem; color:#ddd; margin-top:8px; line-height:1.6;">
+        Texture packs used in my videos
       </p>
-    </a>
+    </header>
 
-    <!-- Crosshair Indicator -->
-    <a href="https://www.curseforge.com/minecraft-bedrock/texture-packs/crosshair-indicator" class="pack-card">
-      <img src="packs/crosshair.png" alt="Pack Thumbnail" class="pack-thumb">
-      <h2 class="pack-name">Crosshair Indicator</h2>
-      <p style="color:#ddd; font-size:0.95rem; margin:8px 0;">
-        A simple crosshair indicator for better aiming.
+    <div class="packs-search-wrap">
+      <input
+        type="search"
+        id="packSearch"
+        class="packs-search"
+        placeholder="Search texture packs..."
+        aria-label="Search texture packs"
+      >
+    </div>
+
+    <p id="searchEmpty" class="search-empty">No texture packs matched your search.</p>
+
+    <main class="packs-grid" id="packsGrid">
+      <a href="https://www.curseforge.com/minecraft-bedrock/texture-packs/better-clouds-v2" class="pack-card" data-search="better clouds v2 better clouds with more detail and a new design" target="_blank" rel="noopener noreferrer">
+        <img src="packs/betterclouds.png" alt="Pack Thumbnail" class="pack-thumb">
+        <h2 class="pack-name">Better Clouds V2</h2>
+        <p style="color:#ddd; font-size:0.95rem; margin:8px 0;">
+          Better clouds with more detail and a new design.
+        </p>
+      </a>
+
+      <a href="https://www.curseforge.com/minecraft-bedrock/texture-packs/crosshair-indicator" class="pack-card" data-search="crosshair indicator a simple crosshair indicator for better aiming" target="_blank" rel="noopener noreferrer">
+        <img src="packs/crosshair.png" alt="Pack Thumbnail" class="pack-thumb">
+        <h2 class="pack-name">Crosshair Indicator</h2>
+        <p style="color:#ddd; font-size:0.95rem; margin:8px 0;">
+          A simple crosshair indicator for better aiming.
+        </p>
+      </a>
+
+      <a href="https://www.curseforge.com/minecraft-bedrock/texture-packs/dark-mode-theme" class="pack-card" data-search="dark mode theme a dark theme for the game interface" target="_blank" rel="noopener noreferrer">
+        <img src="packs/darkmode.png" alt="Pack Thumbnail" class="pack-thumb">
+        <h2 class="pack-name">Dark Mode Theme</h2>
+        <p style="color:#ddd; font-size:0.95rem; margin:8px 0;">
+          A dark theme for the game interface.
+        </p>
+      </a>
+
+      <a href="https://www.curseforge.com/minecraft-bedrock/texture-packs/decimal-xp-number" class="pack-card" data-search="decimal xp number display xp as a decimal number for more precision" target="_blank" rel="noopener noreferrer">
+        <img src="packs/decimalxp.png" alt="Pack Thumbnail" class="pack-thumb">
+        <h2 class="pack-name">Decimal XP Number</h2>
+        <p style="color:#ddd; font-size:0.95rem; margin:8px 0;">
+          Display XP as a decimal number for more precision.
+        </p>
+      </a>
+
+      <a href="https://www.curseforge.com/minecraft-bedrock/texture-packs/deesse-inventory-hud" class="pack-card" data-search="inventory hud display your inventory on the hud screen" target="_blank" rel="noopener noreferrer">
+        <img src="packs/inventoryhud.png" alt="Pack Thumbnail" class="pack-thumb">
+        <h2 class="pack-name">Inventory HUD</h2>
+        <p style="color:#ddd; font-size:0.95rem; margin:8px 0;">
+          Display your inventory on the HUD screen.
+        </p>
+      </a>
+
+      <a href="https://mcpedl.com/java-1-7-animations/" class="pack-card" data-search="java 1.7 animations animations inspired by minecraft java edition 1.7" target="_blank" rel="noopener noreferrer">
+        <img src="packs/java.png" alt="Pack Thumbnail" class="pack-thumb">
+        <h2 class="pack-name">Java 1.7 Animations</h2>
+        <p style="color:#ddd; font-size:0.95rem; margin:8px 0;">
+          Animations inspired by Minecraft Java Edition 1.7.
+        </p>
+      </a>
+
+      <a href="https://www.curseforge.com/minecraft-bedrock/texture-packs/pause-marketplace-and-settings-swapper" class="pack-card" data-search="pause marketplace and settings swapper swap between the pause menu marketplace and settings screens" target="_blank" rel="noopener noreferrer">
+        <img src="packs/marketplace.png" alt="Pack Thumbnail" class="pack-thumb">
+        <h2 class="pack-name">Pause Marketplace and Settings Swapper</h2>
+        <p style="color:#ddd; font-size:0.95rem; margin:8px 0;">
+          Swap between the pause menu, marketplace, and settings screens.
+        </p>
+      </a>
+
+      <a href="https://www.curseforge.com/minecraft-bedrock/texture-packs/paddings-remover" class="pack-card" data-search="paddings remover remove unnecessary padding from ui elements" target="_blank" rel="noopener noreferrer">
+        <img src="packs/paddings.png" alt="Pack Thumbnail" class="pack-thumb">
+        <h2 class="pack-name">Paddings Remover</h2>
+        <p style="color:#ddd; font-size:0.95rem; margin:8px 0;">
+          Remove unnecessary padding from UI elements.
+        </p>
+      </a>
+
+      <a href="https://www.planetminecraft.com/texture-pack/queazy-s-better-armors-amp-tools/" class="pack-card" data-search="queazys better armors and tools queazys improved textures for armors and tools" target="_blank" rel="noopener noreferrer">
+        <img src="packs/queazy.png" alt="Pack Thumbnail" class="pack-thumb">
+        <h2 class="pack-name">Queazy's Better Armors &amp; Tools</h2>
+        <p style="color:#ddd; font-size:0.95rem; margin:8px 0;">
+          Queazy's Improved textures for Armors and Tools.
+        </p>
+      </a>
+
+      <a href="https://www.curseforge.com/minecraft-bedrock/texture-packs/shaded-font-16x" class="pack-card" data-search="shaded font 16x add shading to your font to make it cooler" target="_blank" rel="noopener noreferrer">
+        <img src="packs/shadedfont.png" alt="Pack Thumbnail" class="pack-thumb">
+        <h2 class="pack-name">Shaded Font 16x</h2>
+        <p style="color:#ddd; font-size:0.95rem; margin:8px 0;">
+          Add shading to your font to make it cooler.
+        </p>
+      </a>
+
+      <a href="https://www.curseforge.com/minecraft-bedrock/texture-packs/vibrant-legacy-simple" class="pack-card" data-search="vibrant legacy simple a simple vibrant visuals pack" target="_blank" rel="noopener noreferrer">
+        <img src="packs/simplevibrant.png" alt="Pack Thumbnail" class="pack-thumb">
+        <h2 class="pack-name">Vibrant Legacy (Simple)</h2>
+        <p style="color:#ddd; font-size:0.95rem; margin:8px 0;">
+          A Simple Vibrant Visuals pack.
+        </p>
+      </a>
+
+      <a href="https://mcpedl.com/no-air-punch-sound/" class="pack-card" data-search="no air punch sound remove the sound effect when punching air" target="_blank" rel="noopener noreferrer">
+        <img src="packs/noairpunch.png" alt="Pack Thumbnail" class="pack-thumb">
+        <h2 class="pack-name">No Air Punch Sound</h2>
+        <p style="color:#ddd; font-size:0.95rem; margin:8px 0;">
+          Remove the sound effect when punching air.
+        </p>
+      </a>
+    </main>
+
+    <header>
+      <h1>Custom Pack Creation</h1>
+      <p style="font-size:1.1rem; color:#ddd; margin-top:8px; line-height:1.6;">
+        These are not texture packs but tools/sites to create your own.
       </p>
-    </a>
+    </header>
 
-    <!-- Dark Mode Theme -->
-    <a href="https://www.curseforge.com/minecraft-bedrock/texture-packs/dark-mode-theme" class="pack-card">
-      <img src="packs/darkmode.png" alt="Pack Thumbnail" class="pack-thumb">
-      <h2 class="pack-name">Dark Mode Theme</h2>
-      <p style="color:#ddd; font-size:0.95rem; margin:8px 0;">
-        A dark theme for the game interface.
-      </p>
-    </a>
-
-    <!-- Decimal XP Number -->
-    <a href="https://www.curseforge.com/minecraft-bedrock/texture-packs/decimal-xp-number" class="pack-card">
-      <img src="packs/decimalxp.png" alt="Pack Thumbnail" class="pack-thumb">
-      <h2 class="pack-name">Decimal XP Number</h2>
-      <p style="color:#ddd; font-size:0.95rem; margin:8px 0;">
-        Display XP as a decimal number for more precision.
-      </p>
-    </a>
-
-    <!-- Inventory HUD -->
-    <a href="https://www.curseforge.com/minecraft-bedrock/texture-packs/deesse-inventory-hud" class="pack-card">
-      <img src="packs/inventoryhud.png" alt="Pack Thumbnail" class="pack-thumb">
-      <h2 class="pack-name">Inventory HUD</h2>
-      <p style="color:#ddd; font-size:0.95rem; margin:8px 0;">
-        Display your inventory on the HUD screen.
-      </p>
-    </a>
-
-    <!-- Java 1.7 Animations -->
-    <a href="https://mcpedl.com/java-1-7-animations/" class="pack-card">
-      <img src="packs/java.png" alt="Pack Thumbnail" class="pack-thumb">
-      <h2 class="pack-name">Java 1.7 Animations</h2>
-      <p style="color:#ddd; font-size:0.95rem; margin:8px 0;">
-        Animations inspired by Minecraft Java Edition 1.7.
-      </p>
-    </a>
-
-    <!-- Marketplace and Settings Swapper -->
-    <a href="https://www.curseforge.com/minecraft-bedrock/texture-packs/pause-marketplace-and-settings-swapper" class="pack-card">
-      <img src="packs/marketplace.png" alt="Pack Thumbnail" class="pack-thumb">
-      <h2 class="pack-name">Pause Marketplace and Settings Swapper</h2>
-      <p style="color:#ddd; font-size:0.95rem; margin:8px 0;">
-        Swap between the pause menu, marketplace, and settings screens.
-      </p>
-    </a>
-
-    <!-- Paddings Remover -->
-    <a href="https://www.curseforge.com/minecraft-bedrock/texture-packs/paddings-remover" class="pack-card">
-      <img src="packs/paddings.png" alt="Pack Thumbnail" class="pack-thumb">
-      <h2 class="pack-name">Paddings Remover</h2>
-      <p style="color:#ddd; font-size:0.95rem; margin:8px 0;">
-        Remove unnecessary padding from UI elements.
-      </p>
-    </a>
-
-    <!-- Queazy's Better Armors & Tools -->
-    <a href="https://www.planetminecraft.com/texture-pack/queazy-s-better-armors-amp-tools/" class="pack-card">
-      <img src="packs/queazy.png" alt="Pack Thumbnail" class="pack-thumb">
-      <h2 class="pack-name">Queazy's Better Armors & Tools</h2>
-      <p style="color:#ddd; font-size:0.95rem; margin:8px 0;">
-        Queazy's Improved textures for Armors and Tools.
-      </p>
-    </a>
-
-    <!-- Shaded Font 16x -->
-    <a href="https://www.curseforge.com/minecraft-bedrock/texture-packs/shaded-font-16x" class="pack-card">
-      <img src="packs/shadedfont.png" alt="Pack Thumbnail" class="pack-thumb">
-      <h2 class="pack-name">Shaded Font 16x</h2>
-      <p style="color:#ddd; font-size:0.95rem; margin:8px 0;">
-        Add shading to your font to make it cooler.
-      </p>
-    </a>
-
-    <!-- Vibrant Legacy Simple -->
-    <a href="https://www.curseforge.com/minecraft-bedrock/texture-packs/vibrant-legacy-simple" class="pack-card">
-      <img src="packs/simplevibrant.png" alt="Pack Thumbnail" class="pack-thumb">
-      <h2 class="pack-name">Vibrant Legacy (Simple)</h2>
-      <p style="color:#ddd; font-size:0.95rem; margin:8px 0;">
-        A Simple Vibrant Visuals pack.
-      </p>
-    </a>
-
-    <!-- No Air Punch Sound -->
-    <a href="https://mcpedl.com/no-air-punch-sound/" class="pack-card">
-      <img src="packs/noairpunch.png" alt="Pack Thumbnail" class="pack-thumb">
-      <h2 class="pack-name">No Air Punch Sound</h2>
-      <p style="color:#ddd; font-size:0.95rem; margin:8px 0;">
-        Remove the sound effect when punching air.
-      </p>
-    </a>
-
-  </main>
-
-  <header>
-    <h1>Custom Pack Creation</h1>
-    <p style="font-size:1.1rem; color:#ddd; margin-top:8px; line-height:1.6;">
-      These are not texture packs but tools/sites to create your own.
-    </p>
-  </header>
-
-  <main class="packs-grid">
-
-    <!-- Bedrock Tweaks -->
-    <a href="https://bedrocktweaks.net/resource-packs" class="pack-card">
-      <h2 class="pack-name">Bedrock Tweaks</h2>
-      <p style="color:#ddd; font-size:0.95rem; margin:8px 0;">
-        Create your own custom resource packs with Bedrock Tweaks' online editor.
-        <br><br><strong>Note:</strong> "Numbered Hotbar" will be created here.
-      </p>
-    </a>
-
-  </main>
+    <main class="packs-grid">
+      <a href="https://bedrocktweaks.net/resource-packs" class="pack-card" target="_blank" rel="noopener noreferrer">
+        <h2 class="pack-name">Bedrock Tweaks</h2>
+        <p style="color:#ddd; font-size:0.95rem; margin:8px 0;">
+          Create your own custom resource packs with Bedrock Tweaks' online editor.
+          <br><br><strong>Note:</strong> "Numbered Hotbar" will be created here.
+        </p>
+      </a>
+    </main>
+  </div>
 
   <footer>
-    <p>© 2026 LD Studios</p>
+    <p>&copy; 2026 LD Studios</p>
+    <p class="footer-credit">Website created and coded by FransLDLIVE</p>
   </footer>
+
+  <div class="external-modal" id="externalModal" aria-hidden="true">
+    <div class="external-modal-card" role="dialog" aria-modal="true" aria-labelledby="externalModalTitle">
+      <h2 class="external-modal-title" id="externalModalTitle">Leaving This Website</h2>
+      <p class="external-modal-text">
+        You are about to open an external link outside this website.
+      </p>
+      <p class="external-modal-note">
+        Please continue carefully. External websites can change at any time, and some links may contain malware, viruses, or other unsafe content.
+      </p>
+      <p class="external-modal-url" id="externalModalUrl"></p>
+      <div class="external-modal-actions">
+        <button type="button" class="external-modal-btn cancel" id="externalCancelBtn">Cancel</button>
+        <button type="button" class="external-modal-btn confirm" id="externalContinueBtn">Continue</button>
+      </div>
+    </div>
+  </div>
 
   <script>
     const dropdownBtn = document.getElementById('dropdownBtn');
     const dropdownMenu = document.getElementById('dropdownMenu');
 
+    function setMenuState(isOpen) {
+      dropdownBtn.classList.toggle('active', isOpen);
+      dropdownMenu.classList.toggle('active', isOpen);
+      dropdownBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    }
+
     dropdownBtn.addEventListener('click', function(e) {
       e.stopPropagation();
-      dropdownBtn.classList.toggle('active');
-      dropdownMenu.classList.toggle('active');
+      const isOpen = !dropdownBtn.classList.contains('active');
+      setMenuState(isOpen);
     });
 
     document.addEventListener('click', function() {
-      dropdownBtn.classList.remove('active');
-      dropdownMenu.classList.remove('active');
+      setMenuState(false);
     });
 
     dropdownMenu.addEventListener('click', function(e) {
@@ -191,10 +212,88 @@
 
     const dropdownLinks = document.querySelectorAll('.dropdown-link');
     dropdownLinks.forEach(link => {
-      link.addEventListener('click', function() {
-        dropdownBtn.classList.remove('active');
-        dropdownMenu.classList.remove('active');
+      link.addEventListener('click', function(e) {
+        const nextUrl = link.getAttribute('href');
+        if (!nextUrl) return;
+
+        e.preventDefault();
+        setMenuState(false);
+        document.body.classList.add('page-leaving');
+        setTimeout(() => {
+          window.location.href = nextUrl;
+        }, 220);
       });
+    });
+
+    const packSearch = document.getElementById('packSearch');
+    const packsGrid = document.getElementById('packsGrid');
+    const searchEmpty = document.getElementById('searchEmpty');
+    const searchableCards = packsGrid ? packsGrid.querySelectorAll('.pack-card') : [];
+    const externalModal = document.getElementById('externalModal');
+    const externalModalUrl = document.getElementById('externalModalUrl');
+    const externalCancelBtn = document.getElementById('externalCancelBtn');
+    const externalContinueBtn = document.getElementById('externalContinueBtn');
+    const externalCards = document.querySelectorAll('.pack-card[target="_blank"]');
+    let pendingExternalUrl = '';
+
+    if (packSearch && searchableCards.length) {
+      packSearch.addEventListener('input', function() {
+        const query = packSearch.value.trim().toLowerCase();
+        let visibleCount = 0;
+
+        searchableCards.forEach(card => {
+          const searchText = card.dataset.search || '';
+          const isMatch = !query || searchText.includes(query);
+
+          card.style.display = isMatch ? '' : 'none';
+          if (isMatch) visibleCount += 1;
+        });
+
+        searchEmpty.style.display = visibleCount === 0 ? 'block' : 'none';
+      });
+    }
+
+    function closeExternalModal() {
+      pendingExternalUrl = '';
+      externalModal.classList.remove('active');
+      externalModal.setAttribute('aria-hidden', 'true');
+    }
+
+    function openExternalModal(url) {
+      pendingExternalUrl = url;
+      externalModalUrl.textContent = url;
+      externalModal.classList.add('active');
+      externalModal.setAttribute('aria-hidden', 'false');
+    }
+
+    externalCards.forEach(card => {
+      card.addEventListener('click', function(e) {
+        const nextUrl = card.getAttribute('href');
+        if (!nextUrl) return;
+
+        e.preventDefault();
+        openExternalModal(nextUrl);
+      });
+    });
+
+    externalCancelBtn.addEventListener('click', closeExternalModal);
+
+    externalContinueBtn.addEventListener('click', function() {
+      if (!pendingExternalUrl) return;
+      window.open(pendingExternalUrl, '_blank', 'noopener,noreferrer');
+      closeExternalModal();
+    });
+
+    externalModal.addEventListener('click', function(e) {
+      if (e.target === externalModal) {
+        closeExternalModal();
+      }
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && externalModal.classList.contains('active')) {
+        closeExternalModal();
+      }
     });
   </script>
 </body>

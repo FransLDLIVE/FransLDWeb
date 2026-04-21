@@ -4,13 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Socials - FransLDLIVE</title>
+  <link rel="icon" type="image/png" href="images/icon.png">
+  <style>
+    html, body {
+      margin: 0;
+      background: #050507;
+      color: #fff;
+    }
+  </style>
   <link rel="stylesheet" href="css/style.css">
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="socials-page">
   <nav class="navbar">
     <div class="nav-left">
-      <img src="logo.png" alt="FransLDLIVE Logo" class="logo-img">
+      <img src="images/logo.png" alt="FransLDLIVE Logo" class="logo-img">
     </div>
     <div class="nav-right">
       <div class="dropdown">
@@ -21,7 +29,7 @@
         </button>
         <div class="dropdown-menu" id="dropdownMenu">
           <a href="index.html" class="dropdown-link">Home</a>
-          <a href="socials.html" class="dropdown-link">Socials</a>
+          <a href="socials.html" class="dropdown-link" aria-current="page">Socials</a>
           <a href="texturepacks.html" class="dropdown-link">Texture Packs</a>
         </div>
       </div>
@@ -31,15 +39,15 @@
   <div class="page-shell">
     <div class="content-card">
       <header>
-        <img src="profile.png" alt="Profile" class="profile-img">
+        <img src="images/profile.png" alt="Profile" class="profile-img">
         <h1>FransLDLIVE</h1>
         <p>Gamer &bull; Minecraft Animator &bull; Content Creator</p>
       </header>
 
       <main>
-        <a href="https://discord.gg/NmwhFCevZF" target="_blank" rel="noopener noreferrer" class="link-btn discord">
+        <a href="https://discord.gg/NmwhFCevZF" target="_blank" rel="noopener noreferrer" class="link-btn discord" id="discordInviteLink">
           <img src="icons/discord.png" alt="Discord" class="btn-icon">
-          <span class="btn-text">Join My "Unfinished" Discord</span>
+          <span class="btn-text">Join My Discord</span>
         </a>
 
         <a href="https://youtube.com/@FransLDLIVE" target="_blank" rel="noopener noreferrer" class="link-btn youtube">
@@ -70,9 +78,32 @@
     <p class="footer-credit">Website created and coded by FransLDLIVE</p>
   </footer>
 
+  <div class="external-modal" id="discordWarningModal" aria-hidden="true">
+    <div class="external-modal-card" role="dialog" aria-modal="true" aria-labelledby="discordWarningTitle">
+      <h2 class="external-modal-title" id="discordWarningTitle">Unfinished Discord Server</h2>
+      <p class="external-modal-text">
+        This Discord server is still unfinished and may have incomplete channels, roles, features, or setup.
+      </p>
+      <p class="external-modal-note">
+        You can still enter now if you want, but just keep in mind that some parts of the server may still be under construction.
+      </p>
+      <p class="external-modal-url" id="discordWarningUrl"></p>
+      <div class="external-modal-actions">
+        <button type="button" class="external-modal-btn cancel" id="discordCancelBtn">Cancel</button>
+        <button type="button" class="external-modal-btn confirm" id="discordContinueBtn">Enter Anyway</button>
+      </div>
+    </div>
+  </div>
+
   <script>
     const dropdownBtn = document.getElementById('dropdownBtn');
     const dropdownMenu = document.getElementById('dropdownMenu');
+    const discordInviteLink = document.getElementById('discordInviteLink');
+    const discordWarningModal = document.getElementById('discordWarningModal');
+    const discordWarningUrl = document.getElementById('discordWarningUrl');
+    const discordCancelBtn = document.getElementById('discordCancelBtn');
+    const discordContinueBtn = document.getElementById('discordContinueBtn');
+    let pendingDiscordUrl = '';
 
     function setMenuState(isOpen) {
       dropdownBtn.classList.toggle('active', isOpen);
@@ -107,6 +138,52 @@
           window.location.href = nextUrl;
         }, 220);
       });
+    });
+
+    function closeDiscordWarning() {
+      pendingDiscordUrl = '';
+      document.body.classList.remove('external-modal-open');
+      discordInviteLink.classList.remove('modal-source');
+      discordWarningModal.classList.remove('active');
+      discordWarningModal.setAttribute('aria-hidden', 'true');
+    }
+
+    function openDiscordWarning(url) {
+      pendingDiscordUrl = url;
+      discordWarningUrl.textContent = url;
+      document.body.classList.add('external-modal-open');
+      discordInviteLink.classList.add('modal-source');
+      discordInviteLink.blur();
+      discordWarningModal.classList.add('active');
+      discordWarningModal.setAttribute('aria-hidden', 'false');
+    }
+
+    discordInviteLink.addEventListener('click', function(e) {
+      const nextUrl = discordInviteLink.getAttribute('href');
+      if (!nextUrl) return;
+
+      e.preventDefault();
+      openDiscordWarning(nextUrl);
+    });
+
+    discordCancelBtn.addEventListener('click', closeDiscordWarning);
+
+    discordContinueBtn.addEventListener('click', function() {
+      if (!pendingDiscordUrl) return;
+      window.open(pendingDiscordUrl, '_blank', 'noopener,noreferrer');
+      closeDiscordWarning();
+    });
+
+    discordWarningModal.addEventListener('click', function(e) {
+      if (e.target === discordWarningModal) {
+        closeDiscordWarning();
+      }
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && discordWarningModal.classList.contains('active')) {
+        closeDiscordWarning();
+      }
     });
   </script>
 </body>

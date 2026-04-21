@@ -4,13 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Texture Packs - FransLDLIVE</title>
+  <link rel="icon" type="image/png" href="images/icon.png">
+  <style>
+    html, body {
+      margin: 0;
+      background: #050507;
+      color: #fff;
+    }
+  </style>
   <link rel="stylesheet" href="css/style.css">
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="texturepacks-page">
   <nav class="navbar">
     <div class="nav-left">
-      <img src="logo.png" alt="FransLDLIVE Logo" class="logo-img">
+      <img src="images/logo.png" alt="FransLDLIVE Logo" class="logo-img">
     </div>
     <div class="nav-right">
       <div class="dropdown">
@@ -22,13 +30,19 @@
         <div class="dropdown-menu" id="dropdownMenu">
           <a href="index.html" class="dropdown-link">Home</a>
           <a href="socials.html" class="dropdown-link">Socials</a>
-          <a href="texturepacks.html" class="dropdown-link">Texture Packs</a>
+          <a href="texturepacks.html" class="dropdown-link" aria-current="page">Texture Packs</a>
         </div>
       </div>
     </div>
   </nav>
 
   <div class="page-shell">
+    <nav class="section-jump-nav" aria-label="Texture pack page sections">
+      <a href="#texture-packs-section" class="section-jump-link is-active">Texture Packs</a>
+      <a href="#custom-packs-section" class="section-jump-link">Custom Packs</a>
+    </nav>
+
+    <section class="packs-section" id="texture-packs-section">
     <header>
       <h1>Texture Packs</h1>
       <p style="font-size:1.1rem; color:#ddd; margin-top:8px; line-height:1.6;">
@@ -45,6 +59,8 @@
         aria-label="Search texture packs"
       >
     </div>
+
+    <div class="packs-letter-nav" id="packsLetterNav" aria-label="Jump to texture packs by letter"></div>
 
     <p id="searchEmpty" class="search-empty">No texture packs matched your search.</p>
 
@@ -145,7 +161,9 @@
         </p>
       </a>
     </main>
+    </section>
 
+    <section class="packs-section" id="custom-packs-section">
     <header>
       <h1>Custom Pack Creation</h1>
       <p style="font-size:1.1rem; color:#ddd; margin-top:8px; line-height:1.6;">
@@ -162,6 +180,7 @@
         </p>
       </a>
     </main>
+    </section>
   </div>
 
   <footer>
@@ -211,6 +230,7 @@
     });
 
     const dropdownLinks = document.querySelectorAll('.dropdown-link');
+    const sectionJumpLinks = document.querySelectorAll('.section-jump-link');
     dropdownLinks.forEach(link => {
       link.addEventListener('click', function(e) {
         const nextUrl = link.getAttribute('href');
@@ -227,6 +247,7 @@
 
     const packSearch = document.getElementById('packSearch');
     const packsGrid = document.getElementById('packsGrid');
+    const packsLetterNav = document.getElementById('packsLetterNav');
     const searchEmpty = document.getElementById('searchEmpty');
     const searchableCards = packsGrid ? packsGrid.querySelectorAll('.pack-card') : [];
     const externalModal = document.getElementById('externalModal');
@@ -234,7 +255,118 @@
     const externalCancelBtn = document.getElementById('externalCancelBtn');
     const externalContinueBtn = document.getElementById('externalContinueBtn');
     const externalCards = document.querySelectorAll('.pack-card[target="_blank"]');
+    const packLetterIndex = ['0-9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
     let pendingExternalUrl = '';
+    let activeExternalCard = null;
+    let observedPackSections = [];
+
+    function getPackLetter(card) {
+      const packName = card.querySelector('.pack-name');
+      const firstChar = packName ? packName.textContent.trim().charAt(0).toUpperCase() : '#';
+      return /[A-Z]/.test(firstChar) ? firstChar : '0-9';
+    }
+
+    function buildPackLetterNavigation() {
+      if (!packsGrid || !packsLetterNav || !searchableCards.length) return;
+
+      const seenLetters = new Set();
+
+      searchableCards.forEach(card => {
+        const letter = getPackLetter(card);
+        card.dataset.letter = letter;
+
+        if (!seenLetters.has(letter)) {
+          seenLetters.add(letter);
+
+          const heading = document.createElement('div');
+          heading.className = 'packs-letter-heading';
+          heading.dataset.letterHeading = letter;
+          heading.id = `packs-letter-${letter.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
+          heading.textContent = letter;
+          packsGrid.insertBefore(heading, card);
+        }
+      });
+
+      packLetterIndex.forEach(letter => {
+        const jumpButton = document.createElement('button');
+        jumpButton.type = 'button';
+        jumpButton.className = 'packs-letter-link';
+        jumpButton.dataset.letterTarget = letter;
+        jumpButton.textContent = letter;
+        jumpButton.setAttribute('aria-label', `Jump to texture packs starting with ${letter}`);
+        jumpButton.addEventListener('click', function() {
+          const targetHeading = document.getElementById(`packs-letter-${letter.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`);
+          if (targetHeading) {
+            targetHeading.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+        packsLetterNav.appendChild(jumpButton);
+      });
+    }
+
+    function refreshPackLetterNavigation() {
+      if (!packsGrid || !packsLetterNav) return;
+
+      const letterButtons = packsLetterNav.querySelectorAll('.packs-letter-link');
+      const letterHeadings = packsGrid.querySelectorAll('.packs-letter-heading');
+
+      letterHeadings.forEach(heading => {
+        const letter = heading.dataset.letterHeading;
+        const matchingCards = Array.from(searchableCards).filter(card => card.dataset.letter === letter);
+        const hasVisibleCards = matchingCards.some(card => card.style.display !== 'none');
+        heading.style.display = hasVisibleCards ? '' : 'none';
+      });
+
+      letterButtons.forEach(button => {
+        const letter = button.dataset.letterTarget;
+        const hasVisibleCards = Array.from(searchableCards).some(card => {
+          return card.dataset.letter === letter && card.style.display !== 'none';
+        });
+
+        button.disabled = !hasVisibleCards;
+        button.classList.toggle('is-disabled', !hasVisibleCards);
+      });
+    }
+
+    function refreshActivePackSection() {
+      if (!observedPackSections.length) return;
+
+      const sectionInView = observedPackSections.find(section => {
+        const rect = section.getBoundingClientRect();
+        return rect.top <= 220 && rect.bottom >= 220;
+      }) || observedPackSections[0];
+
+      if (!sectionInView) return;
+
+      sectionJumpLinks.forEach(link => {
+        const isMatch = link.getAttribute('href') === `#${sectionInView.id}`;
+        link.classList.toggle('is-active', isMatch);
+      });
+    }
+
+    function refreshActivePackLetter() {
+      if (!packsGrid || !packsLetterNav) return;
+
+      const visibleHeadings = Array.from(packsGrid.querySelectorAll('.packs-letter-heading'))
+        .filter(heading => heading.style.display !== 'none');
+
+      const activeHeading = visibleHeadings.find(heading => {
+        const rect = heading.getBoundingClientRect();
+        return rect.top <= 240 && rect.bottom >= 120;
+      }) || visibleHeadings[0];
+
+      const activeLetter = activeHeading ? activeHeading.dataset.letterHeading : '';
+
+      packsLetterNav.querySelectorAll('.packs-letter-link').forEach(button => {
+        button.classList.toggle('is-active', button.dataset.letterTarget === activeLetter && !button.disabled);
+      });
+    }
+
+    buildPackLetterNavigation();
+    refreshPackLetterNavigation();
+    observedPackSections = Array.from(document.querySelectorAll('.packs-section'));
+    refreshActivePackSection();
+    refreshActivePackLetter();
 
     if (packSearch && searchableCards.length) {
       packSearch.addEventListener('input', function() {
@@ -249,19 +381,47 @@
           if (isMatch) visibleCount += 1;
         });
 
+        refreshPackLetterNavigation();
+        refreshActivePackLetter();
         searchEmpty.style.display = visibleCount === 0 ? 'block' : 'none';
       });
     }
 
+    sectionJumpLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        sectionJumpLinks.forEach(item => item.classList.remove('is-active'));
+        link.classList.add('is-active');
+      });
+    });
+
+    document.addEventListener('scroll', function() {
+      refreshActivePackSection();
+      refreshActivePackLetter();
+    }, { passive: true });
+
     function closeExternalModal() {
       pendingExternalUrl = '';
+      document.body.classList.remove('external-modal-open');
+      if (activeExternalCard) {
+        activeExternalCard.classList.remove('modal-source');
+        activeExternalCard = null;
+      }
       externalModal.classList.remove('active');
       externalModal.setAttribute('aria-hidden', 'true');
     }
 
-    function openExternalModal(url) {
+    function openExternalModal(url, sourceCard) {
       pendingExternalUrl = url;
+      if (activeExternalCard && activeExternalCard !== sourceCard) {
+        activeExternalCard.classList.remove('modal-source');
+      }
+      activeExternalCard = sourceCard || null;
+      if (activeExternalCard) {
+        activeExternalCard.classList.add('modal-source');
+        activeExternalCard.blur();
+      }
       externalModalUrl.textContent = url;
+      document.body.classList.add('external-modal-open');
       externalModal.classList.add('active');
       externalModal.setAttribute('aria-hidden', 'false');
     }
@@ -272,7 +432,7 @@
         if (!nextUrl) return;
 
         e.preventDefault();
-        openExternalModal(nextUrl);
+        openExternalModal(nextUrl, card);
       });
     });
 

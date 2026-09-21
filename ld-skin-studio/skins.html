@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="../images/icon.png" rel="icon" type="image/png"/>
+<title>
+   Skins — LD Skin Studio
+  </title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="assets/vendor/minecraft-css-3d-skin-viewer/minecraft-skinviewer.css" rel="stylesheet"/>
+<link href="assets/css/style.css" rel="stylesheet"/>
+</head>
+<body>
+<header class="site-header">
+<nav aria-label="LD Skin Studio navigation" class="nav">
+<a class="brand" href="index.html">
+<img alt="LD Skin Studio" class="brand-logo" src="assets/images/ld-skin-studio-logo.png"/>
+</a>
+<button aria-expanded="false" aria-label="Open navigation" class="menu-button" data-menu-button="" type="button">
+     ☰
+    </button>
+<div class="nav-links" data-menu="">
+<a href="../index.html">
+      FransLDLIVE
+     </a>
+<a href="index.html">
+      Home
+     </a>
+<a aria-current="page" href="skins.html">
+      Skins
+     </a>
+<a href="pricing.html">
+      Prices
+     </a>
+<a class="order-link" href="order.html">
+      Order Skins
+     </a>
+</div>
+</nav>
+</header>
+<main class="page">
+<section class="page-hero">
+<p class="eyebrow">
+     Skin Library
+    </p>
+<h1>
+     Skins
+    </h1>
+<p>Browse skins, bases, skin packs, and upcoming releases in one place.</p>
+<div class="breadcrumb">
+<a href="index.html">
+      LD Skin Studio
+     </a>
+<span>
+      /
+     </span>
+<span>
+      Skins
+     </span>
+</div>
+</section>
+<section aria-labelledby="catalog-heading" class="catalog-section">
+<div class="section-heading compact-heading">
+<div>
+<p class="eyebrow">
+       Categories
+      </p>
+<h2 id="catalog-heading">
+       Choose a category
+      </h2>
+</div>
+<p>Choose a category, search the catalog, preview available skins, and download files.</p>
+</div>
+<div aria-label="Skin categories" class="catalog-categories" role="tablist">
+<button aria-selected="true" class="category-tab is-active" data-category-filter="skins" role="tab" type="button">
+      Skins
+     </button>
+<button aria-selected="false" class="category-tab" data-category-filter="base" role="tab" type="button">
+      Base
+     </button>
+<button aria-selected="false" class="category-tab" data-category-filter="skin-packs" role="tab" type="button">
+      Skin Packs
+     </button>
+<button aria-selected="false" class="category-tab" data-category-filter="coming-soon" role="tab" type="button">
+      Coming Soon
+     </button>
+</div>
+<div class="toolbar">
+<div class="search">
+<input aria-label="Search the selected category" data-catalog-search="" placeholder="Search..." type="search"/>
+</div>
+<div aria-label="Skin model filter" class="filter-row" data-model-filters="">
+<button class="filter-chip is-active" data-model-filter="all" type="button">
+       All
+      </button>
+<button class="filter-chip" data-model-filter="classic" type="button">
+       Classic
+      </button>
+<button class="filter-chip" data-model-filter="slim" type="button">
+       Slim
+      </button>
+</div>
+</div>
+<p aria-live="polite" class="count" data-catalog-count="">
+</p>
+<div class="skin-grid" data-catalog-grid="">
+<article class="skin-card catalog-fallback" data-catalog-fallback="">
+<div class="skin-preview-wrap">
+<span class="skin-badge">
+        Demo
+       </span>
+<img alt="LD Studio demo Minecraft skin texture" class="skin-fallback-image" src="skins/files/natsuki.png"/>
+</div>
+<div class="skin-card-body">
+<p class="eyebrow">
+        Slim model
+       </p>
+<h2>
+        Natsuki
+       </h2>
+<p class="skin-description">
+        Natsuki Minecraft skin from the DDLC collection.
+       </p>
+<div class="skin-actions">
+<a class="button button-primary" download="Natsuki.png" href="skins/files/natsuki.png">
+         Download Skin
+        </a>
+</div>
+</div>
+</article>
+<noscript>
+<div class="empty">JavaScript is required for previews and category filters.</div>
+</noscript>
+</div>
+<div class="empty" data-catalog-empty="" hidden="">
+</div>
+</section>
+</main>
+<div aria-hidden="true" class="skin-modal" data-skin-modal="">
+<div aria-labelledby="skin-modal-title" aria-modal="true" class="skin-modal-card" role="dialog">
+<div class="modal-preview">
+<button aria-label="Close preview" class="skin-modal-close" data-modal-close="" type="button">
+      ×
+     </button>
+<div class="modal-3d-viewer" data-modal-viewer=""></div>
+<img alt="Raw Minecraft skin texture" data-modal-raw="" hidden=""/>
+</div>
+<div class="modal-content">
+<p class="eyebrow" data-modal-model="">
+</p>
+<h2 data-modal-title="" id="skin-modal-title">
+      Minecraft Skin
+     </h2>
+<p data-modal-description="">
+</p>
+<div aria-label="Preview view" class="modal-tabs">
+<button class="is-active" data-view="3d" type="button">
+       3D
+      </button>
+<button data-view="front" type="button">
+       Front
+      </button>
+<button data-view="back" type="button">
+       Back
+      </button>
+<button data-view="raw" type="button">
+       Raw PNG
+      </button>
+</div>
+<a class="button button-primary" data-modal-download="" download="minecraft-skin.png" href="#">
+      Download Skin
+     </a>
+</div>
+</div>
+</div>
+<footer class="site-footer">
+<div class="footer">
+<span>
+     ©
+     <span data-year="">
+</span>
+     LD Skin Studio • LD Studios
+    </span>
+<div class="footer-links">
+<a href="../index.html">
+      Main Site
+     </a>
+<a href="index.html">
+      Studio Home
+     </a>
+<a href="pricing.html">
+      Prices
+     </a>
+<a href="order.html">
+      Order Skins
+     </a>
+</div>
+</div>
+</footer>
+<script src="assets/js/site.js">
+</script>
+<script src="assets/js/skin-viewer.js">
+</script>
+<script src="skins/data.js">
+</script>
+<script src="base/data.js">
+</script>
+<script src="skin-packs/data.js">
+</script>
+<script src="coming-soon/data.js">
+</script>
+<script src="assets/js/catalog.js">
+</script>
+</body>
+</html>
